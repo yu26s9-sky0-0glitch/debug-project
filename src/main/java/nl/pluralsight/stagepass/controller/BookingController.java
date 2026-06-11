@@ -3,6 +3,7 @@ package nl.pluralsight.stagepass.controller;
 import jakarta.validation.Valid;
 import nl.pluralsight.stagepass.model.Booking;
 import nl.pluralsight.stagepass.service.BookingService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
