@@ -40,6 +40,12 @@ public class ConcertController {
         return ResponseEntity.ok(concerts);
 
     }
+    @GetMapping("/upcoming")
+    public ResponseEntity<List<Concert>> getUpcomingConcert() {
+        List<Concert> concerts = concertService.getUpComingConcert();
+        return ResponseEntity.ok(concerts);
+
+    }
 
     @PostMapping
     public ResponseEntity<Concert> createConcert(@RequestBody Concert concert) {
