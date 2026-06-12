@@ -2,6 +2,7 @@ package nl.pluralsight.stagepass.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,9 +13,10 @@ public class Concert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotBlank(message = "Concert title cannot be blank")
     private String title;
-
+    @NotNull(message = "Date is required")
+    @FutureOrPresent(message = "Concert date must be today or in the future")
     private LocalDate date;
 
     @ManyToOne
@@ -25,10 +27,14 @@ public class Concert {
     @JoinColumn(name = "venue_id")
     private Venue venue;
 
+    @NotNull
+    @Positive(message = "Total seats must be a positive number")
     private int totalSeats;
 
     private int availableSeats;
 
+    @NotNull(message = "Ticket price is required")
+    @DecimalMin(value = "0.01", message = "Ticket price must be at least 0.01")
     private BigDecimal ticketPrice;
 
     public Concert() {}

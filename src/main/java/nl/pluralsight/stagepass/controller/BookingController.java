@@ -39,7 +39,7 @@ public class BookingController {
     }
 
     @PostMapping
-    public ResponseEntity<Booking> createBooking(@RequestBody Booking booking) {
+    public ResponseEntity<Booking> createBooking(@RequestBody@Valid Booking booking) {
         Booking created = bookingService.createBooking(booking);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

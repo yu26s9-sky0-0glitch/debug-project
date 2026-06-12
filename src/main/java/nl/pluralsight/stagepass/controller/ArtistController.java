@@ -1,5 +1,6 @@
 package nl.pluralsight.stagepass.controller;
 
+import jakarta.validation.Valid;
 import nl.pluralsight.stagepass.model.Artist;
 import nl.pluralsight.stagepass.service.ArtistService;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,7 @@ public class ArtistController {
     }
 
     @PostMapping
-    public ResponseEntity<Artist> createArtist(@RequestBody Artist artist) {
+    public ResponseEntity<Artist> createArtist(@RequestBody@Valid Artist artist) {
         Artist created = artistService.createArtist(artist);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

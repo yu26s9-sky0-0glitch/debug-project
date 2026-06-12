@@ -54,7 +54,7 @@ public class ConcertController {
     }
 
     @PostMapping
-    public ResponseEntity<Concert> createConcert(@RequestBody Concert concert) {
+    public ResponseEntity<Concert> createConcert(@RequestBody@Valid Concert concert) {
         Concert created = concertService.createConcert(concert);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

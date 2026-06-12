@@ -1,5 +1,6 @@
 package nl.pluralsight.stagepass.controller;
 
+import jakarta.validation.Valid;
 import nl.pluralsight.stagepass.model.Venue;
 import nl.pluralsight.stagepass.service.VenueService;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +33,7 @@ public class VenueController {
     }
 
     @PostMapping
-    public ResponseEntity<Venue> createVenue(@RequestBody Venue venue) {
+    public ResponseEntity<Venue> createVenue(@RequestBody@Valid Venue venue) {
         Venue created = venueService.createVenue(venue);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
